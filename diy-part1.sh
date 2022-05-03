@@ -54,7 +54,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 # 自定义定制选项
 sed -i 's#192.168.1.1#192.168.3.212#g' package/base-files/files/bin/config_generate #定制默认IP
 sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings #取消系统默认密码
-sed -i 's#0 6#0 2#g' package/lean/luci-app-adbyby-plus/root/etc/init.d/adbyby #修改adbyby自动更新时间到凌晨2点
+# sed -i 's#0 6#0 2#g' package/lean/luci-app-adbyby-plus/root/etc/init.d/adbyby #修改adbyby自动更新时间到凌晨2点
 # sed -i 's#url-test#fallback#g' package/luci-app-openclash/root/usr/share/openclash/yml_proxys_set.sh #修改openclash自动生成配置中的urltest为fallback
 # sed -i 's#option commit_interval 24h#option commit_interval 10m#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计写入为10分钟
 # sed -i 's#option database_directory /var/lib/nlbwmon#option database_directory /etc/config/nlbwmon_data#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计数据存放默认位置
@@ -178,16 +178,16 @@ EOF
 
 # ShadowsocksR插件:
 cat >> .config <<EOF
-#CONFIG_PACKAGE_luci-app-ssr-plus=y
-#CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
-#CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
+# CONFIG_PACKAGE_luci-app-ssr-plus is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray is not set
 EOF
 
 # xray插件:
-cat >> .config <<EOF
+#cat >> .config <<EOF
 #CONFIG_PACKAGE_luci-app-xray=y
 #CONFIG_PACKAGE_openwrt-xray=y
-EOF
+#EOF
 
 # Passwall插件:
 # cat >> .config <<EOF
@@ -230,9 +230,9 @@ EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
-# CONFIG_PACKAGE_luci-app-adbyby-plus=y #adbyby去广告
+# CONFIG_PACKAGE_luci-app-adbyby-plus is not set #adbyby去广告
 # CONFIG_PACKAGE_luci-app-webadmin is not set #Web管理页面设置
-#CONFIG_DEFAULT_luci-app-vlmcsd=y #KMS激活服务器
+# CONFIG_DEFAULT_luci-app-vlmcsd is not set #KMS激活服务器
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-autoreboot=y #定时重启
 CONFIG_PACKAGE_luci-app-upnp=y #通用即插即用UPnP(端口自动转发)
@@ -253,10 +253,10 @@ CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 # CONFIG_PACKAGE_luci-app-amule is not set #电驴离线下载
 # CONFIG_PACKAGE_luci-app-xlnetacc is not set #迅雷快鸟
 # CONFIG_PACKAGE_luci-app-hd-idle is not set #磁盘休眠
-# CONFIG_PACKAGE_luci-app-unblockmusic=y #解锁网易云灰色歌曲
-# CONFIG_UnblockNeteaseMusic_Go=y
-# CONFIG_UnblockNeteaseMusic_NodeJS=y
-# CONFIG_PACKAGE_luci-i18n-unblockmusic-zh-cn=y
+# CONFIG_PACKAGE_luci-app-unblockmusic is not set #解锁网易云灰色歌曲
+# CONFIG_UnblockNeteaseMusic_Go is not set
+# CONFIG_UnblockNeteaseMusic_NodeJS is not set
+# CONFIG_PACKAGE_luci-i18n-unblockmusic-zh-cn is not set 
 # CONFIG_PACKAGE_luci-app-airplay2 is not set #Apple AirPlay2音频接收服务器
 # CONFIG_PACKAGE_luci-app-music-remote-center is not set #PCHiFi数字转盘遥控
 # CONFIG_PACKAGE_luci-app-usb-printer is not set #USB打印机
