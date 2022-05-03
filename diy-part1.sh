@@ -52,10 +52,10 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 # rm -rf feeds/packages/net/haproxy && svn co https://github.com/lienol/openwrt-packages/trunk/net/haproxy feeds/packages/net/haproxy
 
 # 自定义定制选项
-sed -i 's#192.168.1.1#192.168.3.105#g' package/base-files/files/bin/config_generate #定制默认IP
+sed -i 's#192.168.1.1#192.168.3.212#g' package/base-files/files/bin/config_generate #定制默认IP
 sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings #取消系统默认密码
 sed -i 's#0 6#0 2#g' package/lean/luci-app-adbyby-plus/root/etc/init.d/adbyby #修改adbyby自动更新时间到凌晨2点
-sed -i 's#url-test#fallback#g' package/luci-app-openclash/root/usr/share/openclash/yml_proxys_set.sh #修改openclash自动生成配置中的urltest为fallback
+# sed -i 's#url-test#fallback#g' package/luci-app-openclash/root/usr/share/openclash/yml_proxys_set.sh #修改openclash自动生成配置中的urltest为fallback
 # sed -i 's#option commit_interval 24h#option commit_interval 10m#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计写入为10分钟
 # sed -i 's#option database_directory /var/lib/nlbwmon#option database_directory /etc/config/nlbwmon_data#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计数据存放默认位置
 # sed -i 's@background-color: #e5effd@background-color: #f8fbfe@g' package/luci-theme-edge/htdocs/luci-static/edge/cascade.css #luci-theme-edge主题颜色微调
@@ -158,26 +158,29 @@ cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-oaf is not set #应用过滤
 # CONFIG_PACKAGE_luci-app-openclash=y #OpenClash
 # CONFIG_PACKAGE_luci-app-jd-dailybonus=y #京东签到
-CONFIG_PACKAGE_luci-app-serverchan=y #微信推送
+# CONFIG_PACKAGE_luci-app-serverchan=y #微信推送
 # CONFIG_PACKAGE_luci-app-eqos is not set #IP限速
 # CONFIG_PACKAGE_luci-app-smartdns is not set #smartdns服务器
 # CONFIG_PACKAGE_luci-app-adguardhome is not set #ADguardhome
 # CONFIG_PACKAGE_luci-app-uugamebooster is not set
 # CONFIG_PACKAGE_uugamebooster is not set
+CONFIG_PACKAGE_luci-app-turboacc=y
+CONFIG_PACKAGE_TURBOACC_INCLUDE_BBR_CCA=y
+CONFIG_PACKAGE_luci-app-vnstat=y
 EOF
 
 # 多拨
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-syncdial=y
-CONFIG_PACKAGE_luci-app-macvlan=y
-CONFIG_PACKAGE_luci-app-mwan3=y
+#CONFIG_PACKAGE_luci-app-syncdial=y
+#CONFIG_PACKAGE_luci-app-macvlan=y
+#CONFIG_PACKAGE_luci-app-mwan3=y
 EOF
 
 # ShadowsocksR插件:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-ssr-plus=y
-CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
-CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
+#CONFIG_PACKAGE_luci-app-ssr-plus=y
+#CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
+#CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
 EOF
 
 # xray插件:
@@ -229,7 +232,7 @@ EOF
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-adbyby-plus=y #adbyby去广告
 # CONFIG_PACKAGE_luci-app-webadmin is not set #Web管理页面设置
-CONFIG_DEFAULT_luci-app-vlmcsd=y #KMS激活服务器
+#CONFIG_DEFAULT_luci-app-vlmcsd=y #KMS激活服务器
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-autoreboot=y #定时重启
 CONFIG_PACKAGE_luci-app-upnp=y #通用即插即用UPnP(端口自动转发)
@@ -269,11 +272,11 @@ CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 #
 # VPN相关插件(禁用):
 #
-CONFIG_PACKAGE_luci-app-v2ray-server=y #V2ray服务器
+#CONFIG_PACKAGE_luci-app-v2ray-server=y #V2ray服务器
 # CONFIG_PACKAGE_luci-app-pptp-server is not set #PPTP VPN 服务器
 # CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set #ipsec VPN服务
 # CONFIG_PACKAGE_luci-app-openvpn-server is not set #openvpn服务
-CONFIG_PACKAGE_luci-app-softethervpn=y #SoftEtherVPN服务器
+#CONFIG_PACKAGE_luci-app-softethervpn=y #SoftEtherVPN服务器
 #
 # 文件共享相关(禁用):
 #
@@ -288,7 +291,7 @@ EOF
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-argon-config=y
-CONFIG_PACKAGE_luci-theme-material=y
+#CONFIG_PACKAGE_luci-theme-material=y
 # CONFIG_PACKAGE_luci-theme-netgear is not set
 # CONFIG_PACKAGE_luci-theme-edge is not set
 EOF
@@ -303,14 +306,14 @@ CONFIG_PACKAGE_nano=y
 # CONFIG_PACKAGE_vim-fuller=y
 CONFIG_PACKAGE_wget=y
 CONFIG_PACKAGE_bash=y
-CONFIG_PACKAGE_kmod-tun=y
-CONFIG_PACKAGE_libcap=y
-CONFIG_PACKAGE_libcap-bin=y
+#CONFIG_PACKAGE_kmod-tun=y
+#CONFIG_PACKAGE_libcap=y
+#CONFIG_PACKAGE_libcap-bin=y
 # CONFIG_PACKAGE_ip6tables-mod-nat=y
 CONFIG_PACKAGE_iptables-mod-extra=y
 CONFIG_PACKAGE_ttyd=y
-CONFIG_PACKAGE_https-dns-proxy=y
-CONFIG_PACKAGE_luci-app-https-dns-proxy=y
+#CONFIG_PACKAGE_https-dns-proxy=y
+#CONFIG_PACKAGE_luci-app-https-dns-proxy=y
 CONFIG_PACKAGE_qemu-ga=y 
 CONFIG_PACKAGE_virtio-console-helper=y
 EOF
